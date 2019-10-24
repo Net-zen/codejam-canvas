@@ -23,20 +23,24 @@
     </div>
   </header>
   <main class="main">
-    <ul class="tools--list">
-      <li class="tools--item"></li>
-      <li class="tools--item"></li>
-      <li class="tools--item"></li>
-      <li class="tools--item"></li>
-    </ul>
-    <ul class="colors--list">
-      <li class="colors--item"></li>
-      <li class="colors--item"></li>
-      <li class="colors--item"></li>
-      <li class="colors--item"></li>
-    </ul>
-    <div class="canvas">
-      <canvas width="512" height="512"></canvas>
+    <div class="main--left">
+      <ul class="tools--list">
+        <li class="tools--item tools--item-paint_bucket">Paint bucket</li>
+        <li class="tools--item tools--item-choose_color">Choose color</li>
+        <li class="tools--item tools--item-move">Move</li>
+        <li class="tools--item tools--item-transform">Transform</li>
+      </ul>
+      <ul class="colors--list">
+        <li class="colors--item colors--item-current_color">Current color</li>
+        <li class="colors--item colors--item-prev_color">Prev color</li>
+        <li class="colors--item colors--item-red">red</li>
+        <li class="colors--item colors--item-blue">blue</li>
+      </ul>
+    </div>
+    <div class="main--right">
+      <div class="canvas">
+        <canvas width="512" height="512"></canvas>
+      </div>
     </div>
   </main>
   <script src="js/index.js"></script>
