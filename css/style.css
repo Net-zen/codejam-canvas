@@ -185,7 +185,10 @@ body{
   margin-left: auto;
 }
 .draw_field--canvas{
-  background-image: url('../img/temp--canvas--bg.png');
+  width: 512px;
+  height: 512px;
+  image-rendering: pixelated; 
+  border: 1px solid #000;  
 }
 .size_switcher--list{
   margin: 0;
@@ -242,5 +245,17 @@ body{
   }
   .main--right{
     padding-right: initial;
+  }
+}
+@media screen and (max-width: 715px){
+  .size_switcher{
+    margin-right: auto;
+    margin-left: auto;
+    order: -1;
+  }
+}
+@-moz-document url-prefix() {
+  .draw_field--canvas {
+    image-rendering: crisp-edges;
   }
 }
