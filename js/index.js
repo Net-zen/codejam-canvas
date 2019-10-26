@@ -35,19 +35,26 @@ function getData(url) {
 function fillCanvas(data) {
   canvas.height = data.length;
   canvas.width = data[0].length;
-  data.forEach((element, i) => {
-    element.forEach((el, j) => {
-      if (el.length === 4) {
-        let alpha = (el[3] / 265).toFixed(3);
-        ctx.fillStyle =
-          "rgba(" + el[0] + "," + el[1] + "," + el[2] + "," + alpha + ")";
-        ctx.fillRect(i, j, 1, 1);
-      } else {
-        ctx.fillStyle = "#" + el;
-        ctx.fillRect(i, j, 1, 1);
-      }
-    });
-  });
+  let flatData = data.flat();
+  while (Array.isArray(flatData[0])) {
+    flatData = flatData.flat();
+  }
+  let rgba;
+  if (flatData[0].length === 6) {
+    rgba = flatData.map(el => [
+      parseInt(el.substr(0, 2), 16),
+      parseInt(el.substr(2, 2), 16),
+      parseInt(el.substr(4, 2), 16),
+      255
+    ]);
+    flatData = rgba.flat();
+  }
+  const imgData = new ImageData(
+    Uint8ClampedArray.from(flatData),
+    data.length,
+    data[0].length
+  );
+  ctx.putImageData(imgData, 0, 0);
 }
 
 getData("../data/4x4.json");
